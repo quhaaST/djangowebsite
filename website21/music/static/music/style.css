@@ -1,0 +1,18 @@
+body {
+    background: white url("images/background.jpg");
+}
+
+
+.title{
+    color: burlywood;
+    font-size: 1000%;
+}
+.img{
+    width: 20%;
+    height: 20%;
+}
+.fav{
+    width: 2%;
+    height: 2%;
+}
+

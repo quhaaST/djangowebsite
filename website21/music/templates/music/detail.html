@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ album.album_title }}</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'music/style.css' %}">
+
+
+
+
+</head>
+<body>
+
+<img class="img" src="{{ album.album_logo }}">
+<h1 class="title">{{album.album_title}}</h1>
+<h1>{{ album.artist }}</h1>
+
+{% if error_message %}
+    <p><strong>{{ error_message }}</strong></p>
+{% endif %}
+
+
+<form action="/music/{{ album.id }}/favourite/" method="post">
+    {% csrf_token %}
+    {% for song in album.song_set.all %}
+        <input type="radio" id="song{{ forloop.counter }}" name="song" value="{{ song.id }}" />
+        <label for="song{{ forloop.counter }}">
+            {{ song.song_title }}
+            {% if song.is_favourite %}
+                <img class="fav" src="http://i.imgur.com/kc8B7i7l.png" />
+            {% endif %}
+        </label><br>
+    {% endfor %}
+    <input type="submit" value="Favourite">
+
+
+
+</form>
+
+</body>
+</html>
+
+
+
+
+
+
